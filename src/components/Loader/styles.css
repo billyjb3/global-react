@@ -1,0 +1,39 @@
+.overlayContainer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.overlayBackground {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: .7;
+  z-index: 1;
+}
+
+.overlayForeground {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  color: white;
+  fill: white;
+  stroke: white;
+  animation: spin 3s linear infinite;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg); /* Starting point of the rotation */
+  }
+  to {
+    transform: rotate(360deg); /* Ending point (a full circle) */
+  }
+}
