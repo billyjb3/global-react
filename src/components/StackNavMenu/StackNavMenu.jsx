@@ -1,24 +1,17 @@
-import React, { useState, useRef } from 'react';
-import { StackContext } from './StackMenuContext';
-import { useOnClickout } from '../../hooks';
+import React from 'react';
+import { useStackNavContext } from '../../context';
+import './styles.css';
 
-const StackNavMenu = (props) => {
+export const StackNavMenu = (props) => {
   const {
-    id = 'stackNavMenu',
+    className = '',
     children,
   } = props;
-  const [isOpen, setIsOpen] = useState(false);
-  const menuRef = useRef(null);
-  useOnClickout(menuRef, () => setIsOpen(false));
+  const { id, isOpen } = useStackNavContext();
 
-  const context = { id, isOpen, setIsOpen };
-  return (
-    <StackContext.Provider value={context}>
-      <div ref={menuRef} className={`menuContainer`}>
-        {children}
-      </div>
-    </StackContext.Provider>
-  );
+  return isOpen ? (
+    <nav className={`stackNavMenu ${className}`} id={id}>
+      {children}
+    </nav>
+  ) : null;
 };
-
-export default StackNavMenu;

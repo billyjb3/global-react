@@ -1,22 +1,22 @@
 import React from 'react';
-import { useStackContext } from './StackMenuContext';
-import { IconButton } from '../IconButton';
+import { useStackNavContext } from '../../context';
+import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 import { IconStackMenu } from '../../Icons';
 
 // pre-made button choice, but can be easily replaced with anything custom as long as its under context provider
-const StackControlButton = (props) => {
+export const StackNavControl = (props) => {
   const {
     className = '',
     onClick,
   } = props;
-  const { id, isOpen, setIsOpen } = useStackContext();
+  const { id, isOpen, setIsOpen } = useStackNavContext();
 
   const handleClick = () => {
     setIsOpen(!isOpen);
     onClick && onClick();
   }
   return (
-    <IconButton
+    <ButtonIcon
       onClick={handleClick}
       aria-label={isOpen ? 'close nav menu' : 'open nav menu'}
       aria-expanded={isOpen}
@@ -24,8 +24,6 @@ const StackControlButton = (props) => {
       className={className}
     >
       <IconStackMenu />
-    </IconButton>
+    </ButtonIcon>
   );
 };
-
-export default StackControlButton;

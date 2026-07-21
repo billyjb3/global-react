@@ -1,7 +1,7 @@
 import React from 'react';
-import { useFormContext } from './FormContext';
+import { useFormContext } from '../../context';
 
-const SubmitButton = (props) => {
+export const FormSubmitButton = (props) => {
   const {
     children,
     className = '',
@@ -18,5 +18,3 @@ const SubmitButton = (props) => {
     </button>
   )
 };
-
-export default SubmitButton;

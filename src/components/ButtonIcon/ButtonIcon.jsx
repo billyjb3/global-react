@@ -1,6 +1,7 @@
 import React from 'react';
+import './styles.css';
 
-const IconButton = (props) => {
+export const ButtonIcon = (props) => {
   const {
     onClick,
     className = '',
@@ -18,5 +19,3 @@ const IconButton = (props) => {
     </button>
   );
 };
-
-export default IconButton;

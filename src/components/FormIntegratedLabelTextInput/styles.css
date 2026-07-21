@@ -1,10 +1,8 @@
-
-
-.positionContainer {
+.formIntegratedLabelContainer {
   position: relative;
 }
 
-.textInput {
+.formIntegratedLabelTextInput {
   width: 100%;
   background-color: inherit;
   resize: none;
@@ -13,7 +11,7 @@
   transition: border-color .2s;
 }
 
-.textInputLabel {
+.formIntegratedLabel {
   position: absolute;
   top: 9px;
   left: 6px;
@@ -21,11 +19,11 @@
   padding-right: 6px;
   transition: top ease-out .2s, font-size ease-out .2s;
 }
-.textInputLabel.active {
+.formIntegratedLabel.active {
   top: -9px;
 }
 
-.errorMessage {
+.formIntegratedErrorMessage {
   position: absolute;
   padding-left: 6px;
   padding-right: 6px;

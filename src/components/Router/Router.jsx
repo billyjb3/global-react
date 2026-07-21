@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { RouterContext } from './RouterContext';
+import { RouterContext } from '../../context';
 
-const Router = (props) => {
+export const Router = (props) => {
   const {
     children,
     indexRedirect = '',
@@ -57,5 +57,3 @@ const Router = (props) => {
     </RouterContext.Provider>
   );
 };
-
-export default Router;

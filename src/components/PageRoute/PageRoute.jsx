@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { useRouter } from './RouterContext';
+import { useRouter } from '../../context';
 
-const PageRoute = (props) => {
+export const PageRoute = (props) => {
   const {
     children,
     parentPath = '', // TODO: nested paths aren't completely implemented yet
@@ -34,5 +34,3 @@ const PageRoute = (props) => {
 
   return null;
 };
-
-export default PageRoute;

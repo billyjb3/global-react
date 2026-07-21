@@ -1,7 +1,7 @@
 import React from 'react';
-import { useFormContext } from './FormContext';
+import { useFormContext } from '../../context';
 
-const InputErrorMessage = (props) => {
+export const FormInputErrorMessage = (props) => {
   const {
     inputId,
     className = '',
@@ -15,5 +15,3 @@ const InputErrorMessage = (props) => {
     </span>
   ) : null;
 };
-
-export default InputErrorMessage;

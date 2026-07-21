@@ -20,6 +20,7 @@ export function useBreakpoints(customBreakpoints) {
       const maxCheck = max ? width < max : true;
       values[key] = minCheck && maxCheck;
     });
+    return values;
   }
 
   const [breakpoints, setBreakpoints] = useState(getBreakpoints());

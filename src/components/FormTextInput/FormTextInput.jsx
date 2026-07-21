@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { useFormContext } from './FormContext';
+import React, { useRef, useEffect } from 'react';
+import { useFormContext } from '../../context';
 
-const TextInputCore = (props) => {
+export const FormTextInput = (props) => {
   const {
     id,
     requestKey,
@@ -85,5 +85,3 @@ const TextInputCore = (props) => {
     />
   );
 };
-
-export default TextInputCore;

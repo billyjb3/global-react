@@ -1,7 +1,8 @@
 import React from 'react';
 import { IconLoadingCircles } from '../../Icons';
+import './styles.css';
 
-const SpinnerOverlay = (props) => {
+export const SpinnerOverlay = (props) => {
   const {
     isOn,
     children,
@@ -20,5 +21,3 @@ const SpinnerOverlay = (props) => {
     </div>
   ) : children;
 };
-
-export default SpinnerOverlay;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { FormContext } from './FormContext';
+import { FormContext } from '../../context';
 
 /*
   validation object
@@ -10,7 +10,7 @@ import { FormContext } from './FormContext';
   }
 */
 
-const Form = (props) => {
+export const Form = (props) => {
   const {
     onSubmit,
     children,
@@ -47,7 +47,6 @@ const Form = (props) => {
   };
 
   const validateInput = (id, isOnChange) => { // TODO: might want to find a way to bypass this for isOnChange and no validateOnChange validations
-    console.log('validating: ' + id);
     const validations = formConfig.current[id].validations;
     if (!validations) return true;
     let message = '';
@@ -63,21 +62,17 @@ const Form = (props) => {
       }
     });
     if (message) { // TODO: this gets hit even for no validating on change. problem?
-      console.log('setting error for: ' + id);
       updateInputState(id, { error: message });
       return false;
     } else {
-      console.log('no error for: ' + id);
       updateInputState(id, { error: false });
       return true;
     }
   };
 
   const validateForm = () => {
-    console.log('in validateForm');
     let valid = true;
     Object.keys(formConfig.current).forEach((id) => {
-      console.log('in validation loop, current: ' + id);
       valid = validateInput(id) && valid;
     });
     return valid;
@@ -136,5 +131,3 @@ const Form = (props) => {
     </FormContext.Provider>
   );
 };
-
-export default Form;

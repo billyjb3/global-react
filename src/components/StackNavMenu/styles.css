@@ -1,21 +1,6 @@
 
-.menuContainer {
-  position: relative;
-  display: inline-block;
-}
-
-.stackMenu {
+.stackNavMenu {
   position: absolute;
   width: 240px;
 }
 
-.menuButton {
-  width: 100%;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  text-decoration: none;
-  cursor: pointer;
-}

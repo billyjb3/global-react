@@ -1,0 +1,25 @@
+
+.marqueContainer {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.marqueContent {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  will-change: transform;
+}
+
+.marqueChildContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.marqueChild {
+  flex-grow: 1;
+  flex-basis: max-content;
+}
