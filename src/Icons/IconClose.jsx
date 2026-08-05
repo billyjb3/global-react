@@ -7,7 +7,7 @@ export const IconClose = (props) => {
   } = props;
 
   return (
-    <span className={className}>
+    <div className={className}>
       <svg
         width={size}
         height={size}
@@ -23,6 +23,6 @@ export const IconClose = (props) => {
           />
         </g>
       </svg>
-    </span>
+    </div>
   );
 };
