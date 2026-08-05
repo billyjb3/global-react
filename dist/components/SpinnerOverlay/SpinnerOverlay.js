@@ -1,7 +1,7 @@
 import { jsxs as l, jsx as r } from "react/jsx-runtime";
 import "react";
-import { IconLoadingCircles as c } from "../../Icons/IconLoadingCircles.mjs";
-import './styles.css';/* empty css        */
+import './styles.css';/* empty css           */
+import { IconLoadingCircles as c } from "../../Icons/IconLoadingCircles.js";
 const v = (e) => {
   const {
     isOn: a,

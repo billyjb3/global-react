@@ -1,6 +1,6 @@
 import { jsx as n } from "react/jsx-runtime";
 import { useRef as l, useState as S, useEffect as $ } from "react";
-import './styles.css';/* empty css        */
+import './styles.css';/* empty css           */
 const N = (c) => {
   const {
     width: i = 80,

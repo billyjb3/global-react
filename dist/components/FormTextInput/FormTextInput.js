@@ -1,9 +1,7 @@
 import { jsx as x } from "react/jsx-runtime";
 import { useRef as E, useEffect as R } from "react";
-import "../../context/StackNavContext.mjs";
-import "../../context/RouterContext.mjs";
-import { useFormContext as j } from "../../context/FormContext.mjs";
-const D = (v) => {
+import { useFormContext as j } from "../../context/FormContext.js";
+const K = (v) => {
   const {
     id: e,
     requestKey: t,
@@ -11,12 +9,12 @@ const D = (v) => {
     validations: u = [],
     onFocus: a,
     onBlur: c,
-    onChange: i,
-    className: l = "",
+    onChange: l,
+    className: i = "",
     isTextArea: B = !1,
     rows: T = 10
   } = v, n = E(null), {
-    inputCallback: p,
+    inputCallback: d,
     handleInputChange: q,
     handleInputFocus: I,
     handleInputBlur: A,
@@ -24,10 +22,10 @@ const D = (v) => {
   } = j(), {
     value: s,
     error: N,
-    isFocused: d
+    isFocused: p
   } = (o == null ? void 0 : o[e]) || {};
   R(() => {
-    p(e, {
+    d(e, {
       ref: n,
       requestKey: t,
       validations: u,
@@ -35,28 +33,28 @@ const D = (v) => {
     });
   }, [
     n,
-    p,
+    d,
     e,
     t,
     u
   ]);
-  const m = ($) => {
-    q($, e), i && i($);
-  }, h = () => {
+  const h = ($) => {
+    q($, e), l && l($);
+  }, m = () => {
     I(e), a && a();
   }, f = () => {
     A(e), c && c();
-  }, b = !!s || d, F = N ? "inputError" : "", g = d ? "inputFocused" : "", C = b ? "inputActive" : "";
+  }, b = !!s || p, F = N ? "inputError" : "", g = p ? "inputFocused" : "", C = b ? "inputActive" : "";
   return B ? /* @__PURE__ */ x(
     "textarea",
     {
       id: e,
       ref: n,
       required: r,
-      onChange: m,
-      onFocus: h,
+      onChange: h,
+      onFocus: m,
       onBlur: f,
-      className: `${l} ${F} ${g} ${C}`,
+      className: `${i} ${F} ${g} ${C}`,
       rows: T,
       value: s
     }
@@ -66,14 +64,14 @@ const D = (v) => {
       id: e,
       ref: n,
       required: r,
-      onChange: m,
-      onFocus: h,
+      onChange: h,
+      onFocus: m,
       onBlur: f,
-      className: `${l} ${F} ${g} ${C}`,
+      className: `${i} ${F} ${g} ${C}`,
       value: s
     }
   );
 };
 export {
-  D as FormTextInput
+  K as FormTextInput
 };

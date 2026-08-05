@@ -1,18 +1,16 @@
 import { jsx as n } from "react/jsx-runtime";
 import "react";
-import { useStackNavContext as m } from "../../context/StackNavContext.mjs";
-import "../../context/RouterContext.mjs";
-import "../../context/FormContext.mjs";
-import './styles.css';/* empty css        */
-const v = (s) => {
+import './styles.css';/* empty css           */
+import { useStackNavContext as m } from "../../context/StackNavContext.js";
+const C = (s) => {
   const {
     isRouteChange: c = !0,
     onClick: t,
     href: r,
     className: o = "",
     children: a
-  } = s, { setIsOpen: i } = m(), e = (l) => {
-    l.preventDefault(), i(!1), t && t();
+  } = s, { setIsOpen: l } = m(), e = (i) => {
+    i.preventDefault(), l(!1), t && t();
   };
   return c ? /* @__PURE__ */ n(
     "a",
@@ -32,5 +30,5 @@ const v = (s) => {
   );
 };
 export {
-  v as StackNavButton
+  C as StackNavButton
 };

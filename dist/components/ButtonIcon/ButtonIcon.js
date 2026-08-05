@@ -1,6 +1,6 @@
 import { jsx as n } from "react/jsx-runtime";
 import "react";
-import './styles.css';/* empty css        */
+import './styles.css';/* empty css           */
 const u = (r) => {
   const {
     onClick: s,
