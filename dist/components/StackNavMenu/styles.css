@@ -1,0 +1,1 @@
+.stackNavMenu{position:fixed;top:0;width:240px;height:100vh;right:-240px;transition:right .3s ease-in;z-index:1000;background-color:gray}.stackNavMenu.stackMenuOpen{right:0}.stackNavMenuClose{padding:10px;display:flex;justify-content:right}

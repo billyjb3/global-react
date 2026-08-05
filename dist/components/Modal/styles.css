@@ -1,0 +1,1 @@
+.modalOverlay{position:fixed;width:100vw;height:100vh;background:#0000004d;-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);top:0;left:0;z-index:9999}.modalContainer{position:fixed;width:100vw;height:100vh;display:flex;justify-content:center;align-items:center;top:0;left:0;z-index:10000;overflow-y:scroll}.modalContent{max-height:90vh;width:800px;max-width:90vw}
