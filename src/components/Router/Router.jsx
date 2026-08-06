@@ -4,7 +4,7 @@ import { RouterContext } from '../../context';
 export const Router = (props) => {
   const {
     children,
-    indexRedirect = '',
+    indexRedirect = '/',
   } = props;
   const [pathname, setPathname] = useState(window.location.pathname);
   const sitePaths = useRef([]);
@@ -41,7 +41,7 @@ export const Router = (props) => {
     }
   }, [pathname, sitePaths]);
 
-  if (pathname === '/') {
+  if (pathname === '/' && indexRedirect !== '/') {
     replace(indexRedirect);
   }
 

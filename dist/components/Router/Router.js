@@ -4,7 +4,7 @@ import { RouterContext as f } from "../../context/RouterContext.js";
 const v = (c) => {
   const {
     children: a,
-    indexRedirect: r = ""
+    indexRedirect: r = "/"
   } = c, [n, s] = m(window.location.pathname), e = w([]), u = (t) => {
     e.current.includes(t) || e.current.push(t);
   }, d = (t) => {
@@ -22,7 +22,7 @@ const v = (c) => {
     window.addEventListener("popstate", p);
   }, []), i(() => {
     e.current.length && !e.current.includes(n) && o(r);
-  }, [n, e]), n === "/" && o(r);
+  }, [n, e]), n === "/" && r !== "/" && o(r);
   const h = {
     addPath: u,
     pathname: n,

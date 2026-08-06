@@ -16,6 +16,7 @@ export const ButtonIcon = (props) => {
       href={href}
       className={`iconButton ${className}`}
       target="_blank"
+      {...rest}
     >
       {children}
     </a>
