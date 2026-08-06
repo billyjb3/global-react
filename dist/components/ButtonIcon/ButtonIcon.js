@@ -1,29 +1,30 @@
-import { jsx as n } from "react/jsx-runtime";
+import { jsx as r } from "react/jsx-runtime";
 import "react";
 import './styles.css';/* empty css           */
-const u = (r) => {
+const u = (s) => {
   const {
-    onClick: s,
-    isLink: c,
-    href: a = "",
+    onClick: c,
+    isLink: a,
+    href: e = "",
     className: t = "",
     children: o,
-    ...e
-  } = r;
-  return c ? /* @__PURE__ */ n(
+    ...n
+  } = s;
+  return a ? /* @__PURE__ */ r(
     "a",
     {
-      href: a,
+      href: e,
       className: `iconButton ${t}`,
       target: "_blank",
+      ...n,
       children: o
     }
-  ) : /* @__PURE__ */ n(
+  ) : /* @__PURE__ */ r(
     "button",
     {
-      onClick: s,
+      onClick: c,
       className: `iconButton ${t}`,
-      ...e,
+      ...n,
       children: o
     }
   );
