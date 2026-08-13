@@ -24,10 +24,10 @@ export const Form = (props) => {
     formConfig.current = ({
       ...formConfig.current,
       [id]: {
+        isClearable: true,
         ...inputConfig
       },
     });
-    window.formConfig = formConfig;
     if (!formState[id]) {
       setFormState((prevState => ({
         ...prevState,
@@ -87,9 +87,9 @@ export const Form = (props) => {
   };
 
   const clearForm = useCallback(() => {
-    // Object.values(formConfig.current).forEach((value) => {
-    //   if (value.isClearable) value.ref.current.value = '';
-    // }); //TODO
+    Object.entries(formConfig.current).forEach(([id, value]) => {
+      if (value.isClearable) updateInputState(id, { value: '' });
+    });
   }, []);
 
   const handleSubmit = (e) => {
@@ -112,7 +112,7 @@ export const Form = (props) => {
 
   useEffect(() => {
     if (clearRef) clearRef.current = clearForm;
-  }, [clearForm])
+  }, [clearForm, clearRef])
 
   const formContext = {
     inputCallback,
