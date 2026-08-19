@@ -1,21 +1,23 @@
-import { jsx as n } from "react/jsx-runtime";
+import { jsx as e } from "react/jsx-runtime";
 import "react";
-import { useFormContext as s } from "../../context/FormContext.js";
-const u = (t) => {
+import { useFormContext as n } from "../../context/FormContext.js";
+const a = (t) => {
   const {
     children: o,
-    className: m = ""
-  } = t, { handleSubmit: r } = s();
-  return /* @__PURE__ */ n(
+    className: m = "",
+    ...r
+  } = t, { handleSubmit: s } = n();
+  return /* @__PURE__ */ e(
     "button",
     {
       type: "submit",
-      onClick: r,
+      onClick: s,
       className: `${m}`,
+      ...r,
       children: o
     }
   );
 };
 export {
-  u as FormSubmitButton
+  a as FormSubmitButton
 };

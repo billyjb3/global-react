@@ -5,6 +5,7 @@ export const FormSubmitButton = (props) => {
   const {
     children,
     className = '',
+    ...rest
   } = props;
   const { handleSubmit } = useFormContext();
 
@@ -13,8 +14,9 @@ export const FormSubmitButton = (props) => {
       type="submit"
       onClick={handleSubmit}
       className={`${className}`}
+      {...rest}
     >
       {children}
     </button>
-  )
+  );
 };

@@ -1,19 +1,20 @@
 import { jsx as i } from "react/jsx-runtime";
-import { useState as w, useRef as y, useCallback as D, useEffect as N } from "react";
-import { FormContext as R } from "../../context/FormContext.js";
-const P = (m) => {
+import { useState as y, useRef as D, useCallback as N, useEffect as R } from "react";
+import { FormContext as q } from "../../context/FormContext.js";
+const $ = (m) => {
   const {
     onSubmit: v,
     children: d,
-    clearRef: c,
+    clearRef: o,
     className: h = ""
-  } = m, [o, u] = w({}), a = y({}), p = (e, t) => {
+  } = m, [s, u] = y({}), a = D({}), p = (e, t) => {
     a.current = {
       ...a.current,
       [e]: {
+        isClearable: !0,
         ...t
       }
-    }, window.formConfig = a, o[e] || u(((r) => ({
+    }, s[e] || u(((r) => ({
       ...r,
       [e]: { value: "" }
     })));
@@ -28,48 +29,51 @@ const P = (m) => {
   }, l = (e, t) => {
     const r = a.current[e].validations;
     if (!r) return !0;
-    let s = "";
-    return r.forEach((E) => {
+    let c = "";
+    return r.forEach((j) => {
       const {
-        validateOnChange: j,
-        validate: k,
-        errorMessage: O
-      } = E;
-      (!t || j) && (k(o[e].value) || (s = O));
-    }), s ? (n(e, { error: s }), !1) : (n(e, { error: !1 }), !0);
-  }, F = () => {
+        validateOnChange: x,
+        validate: O,
+        errorMessage: k
+      } = j;
+      (!t || x) && (O(s[e].value) || (c = k));
+    }), c ? (n(e, { error: c }), !1) : (n(e, { error: !1 }), !0);
+  }, b = () => {
     let e = !0;
     return Object.keys(a.current).forEach((t) => {
       e = l(t) && e;
     }), e;
-  }, g = () => {
+  }, C = () => {
     const e = {};
     return Object.values(a.current).forEach((t) => {
       e[t.requestKey] = t.ref.current.value;
     }), e;
-  }, f = D(() => {
-  }, []), C = (e) => {
-    e.preventDefault(), F() && v(g());
-  }, b = (e, t) => {
+  }, f = N(() => {
+    Object.entries(a.current).forEach(([e, t]) => {
+      t.isClearable && n(e, { value: "" });
+    });
+  }, []), F = (e) => {
+    e.preventDefault(), b() && v(C());
+  }, g = (e, t) => {
     n(t, { value: e.target.value }), l(t, !0);
-  }, I = (e) => {
+  }, E = (e) => {
     n(e, { error: !1, isFocused: !0 });
-  }, S = (e) => {
+  }, I = (e) => {
     n(e, { isFocused: !1 });
   };
-  N(() => {
-    c && (c.current = f);
-  }, [f]);
-  const x = {
+  R(() => {
+    o && (o.current = f);
+  }, [f, o]);
+  const S = {
     inputCallback: p,
-    handleSubmit: C,
-    handleInputChange: b,
-    handleInputFocus: I,
-    handleInputBlur: S,
-    formState: o
+    handleSubmit: F,
+    handleInputChange: g,
+    handleInputFocus: E,
+    handleInputBlur: I,
+    formState: s
   };
-  return /* @__PURE__ */ i(R.Provider, { value: x, children: /* @__PURE__ */ i("form", { className: `${h}`, children: d }) });
+  return /* @__PURE__ */ i(q.Provider, { value: S, children: /* @__PURE__ */ i("form", { className: `${h}`, children: d }) });
 };
 export {
-  P as Form
+  $ as Form
 };
