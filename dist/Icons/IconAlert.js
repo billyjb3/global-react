@@ -1,22 +1,22 @@
-import { jsx as r, jsxs as o } from "react/jsx-runtime";
+import { jsxs as e, jsx as r } from "react/jsx-runtime";
 import "react";
-const d = (t) => {
+const d = (o) => {
   const {
-    size: e = "24px",
+    size: t = "24px",
     className: i = ""
-  } = t;
-  return /* @__PURE__ */ r("span", { className: i, children: /* @__PURE__ */ o(
+  } = o;
+  return /* @__PURE__ */ e(
     "svg",
     {
       viewBox: "0 0 24 24",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg",
-      width: e,
-      height: e,
+      style: { width: t },
+      className: i,
       children: [
         /* @__PURE__ */ r("g", { id: "SVGRepo_bgCarrier", strokeWidth: "0" }),
         /* @__PURE__ */ r("g", { id: "SVGRepo_tracerCarrier", strokeLinecap: "round", strokeLinejoin: "round" }),
-        /* @__PURE__ */ o("g", { id: "SVGRepo_iconCarrier", children: [
+        /* @__PURE__ */ e("g", { id: "SVGRepo_iconCarrier", children: [
           /* @__PURE__ */ r(
             "path",
             {
@@ -36,7 +36,7 @@ const d = (t) => {
         ] })
       ]
     }
-  ) });
+  );
 };
 export {
   d as IconAlert

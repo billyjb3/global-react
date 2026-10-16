@@ -4,35 +4,58 @@ import './styles.css';
 export const Marquee = (props) => {
   const {
     className = '',
-    duration,
+    speed, // px/s
     children,
   } = props;
   const contentRef = useRef(null);
+  const containerRef = useRef(null);
   const animationRef = useRef(null);
-  const [repeats, setRepeats] = useState(2);
+  const childrenRef = useRef(null);
+
+  const [repeats, setRepeats] = useState(1);
   const [containerHeight, setContainerHeight] = useState(0);
-  const [contentWidth, setContentWidth] = useState(0);
+  const [containerWidth, setContainerWidth] = useState(0);
+  const [childrenWidth, setChildrenWidth] = useState(0);
 
   useEffect(() => {
-    const content = contentRef?.current;
-    if (content) {
-      setContentWidth(content.offsetWidth / repeats);
-      setContainerHeight(content.offsetHeight);
+    const setSizing = () => {
+      const containerW = containerRef?.current?.offsetWidth;
+      const childrenW = childrenRef?.current?.offsetWidth;
+      const contentH = contentRef?.current?.offsetHeight;
+
+      if (containerW && containerW !== containerWidth) setContainerWidth(containerW);
+      if (childrenW && childrenW !== childrenWidth) setChildrenWidth(childrenW);
+      if (contentH && contentH !== containerHeight) setContainerHeight(contentH);
+    };
+
+    setSizing();
+    window.addEventListener('resize', setSizing);
+    return () => window.removeEventListener('resize', setSizing);
+  }, []);
+
+  useEffect(() => {
+    if (containerWidth && childrenWidth) {
+      let transWidth = childrenWidth;
+      let repeats = 1;
+
+      if (containerWidth > childrenWidth) {
+        const fillCount = Math.ceil(containerWidth / childrenWidth);
+        repeats = (fillCount * 2) - 1;
+        transWidth = fillCount * childrenWidth;
+        setRepeats(repeats);
+      }
+
+      const duration = transWidth / speed * 1000;
+      if (animationRef.current) animationRef.current.cancel();
+      animationRef.current = contentRef.current.animate([
+        { transform: `translateX(-${transWidth}px)`},
+      ], {
+        duration,
+        iterations: Infinity,
+        easing: 'linear',
+      });
     }
-  }, [contentRef?.current?.offsetWidth, contentRef?.current?.offsetHeight]);
-
-  const frames = [
-    { transform: `translateX(-${contentWidth}px)`},
-  ];
-  const options = {
-    duration,
-    iterations: Infinity,
-  };
-
-  useEffect(() => {
-    const content = contentRef?.current;
-    if (content) animationRef.current = content.animate(frames, options);
-  }, [contentRef?.current]);
+  }, [containerWidth, childrenWidth]);
 
   const handleHover = () => {
     animationRef.current.pause();
@@ -44,46 +67,15 @@ export const Marquee = (props) => {
 
   const getChildRender = () => {
     const render = [];
-    const count = children.length;
-
-    console.log(children[0].offsetWidth);
-    // for (let i = 0; i < repeats; i++) {
-    //   render.push(
-    //     <div style={{
-    //       display: 'grid',
-    //       gridAutoFlow: 'column',
-    //       gridAutoColumns: `minmax(max-content, 1fr)`,
-    //     }}>
-    //       {children}
-    //     </div>
-    //   );
-    // }
-    // for (let i = 0; i < repeats; i++) {
-    //   render.push(
-    //     <div className="marqueChildContainer">
-    //       {children.map((child) => (
-    //         <div className="marqueChild">
-    //           {child}
-    //         </div>
-    //       ))}
-    //     </div>
-    //   );
-    // }
     for (let i = 0; i < repeats; i++) {
       render.push(children);
     }
     return render;
-    // return (
-    //   <div style={{ display: 'grid', gridTemplateColumns: `repeat(${count}, 1fr)` }}>
-    //     {children}
-    //   </div>
-    // );
   };
 
-  // TODO: need a calc to determine how many copies of children should be rendered
-  // TODO: find a way to have the edge elements fade in and out opacity. will have to be calculated
   return (
     <div
+      ref={containerRef}
       className={`marqueContainer ${className}`}
       style={{ height: `${containerHeight}px` }}
       onMouseEnter={handleHover}
@@ -92,9 +84,10 @@ export const Marquee = (props) => {
       <div
         ref={contentRef}
         className={`marqueContent`}
-        // onMouseEnter={handleHover}
-        // onMouseLeave={handleBlur}
       >
+        <div ref={childrenRef} className={`marqueChildContainer`}>
+          {children}
+        </div>
         {getChildRender()}
       </div>
     </div>

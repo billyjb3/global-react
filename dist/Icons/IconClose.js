@@ -1,18 +1,18 @@
-import { jsx as r, jsxs as t } from "react/jsx-runtime";
+import { jsxs as t, jsx as r } from "react/jsx-runtime";
 import "react";
-const d = (i) => {
+const d = (e) => {
   const {
-    size: e = "24px",
+    size: i = "24px",
     className: o = ""
-  } = i;
-  return /* @__PURE__ */ r("div", { className: o, children: /* @__PURE__ */ t(
+  } = e;
+  return /* @__PURE__ */ t(
     "svg",
     {
-      width: e,
-      height: e,
+      style: { width: i },
       viewBox: "0 0 24 24",
       xmlns: "http://www.w3.org/2000/svg",
       "aria-hidden": !0,
+      className: o,
       children: [
         /* @__PURE__ */ r("g", { id: "SVGRepo_bgCarrier", strokeWidth: "0" }),
         /* @__PURE__ */ r("g", { id: "SVGRepo_tracerCarrier", strokeLinecap: "round", strokeLinejoin: "round" }),
@@ -24,7 +24,7 @@ const d = (i) => {
         ) })
       ]
     }
-  ) });
+  );
 };
 export {
   d as IconClose

@@ -3,6 +3,7 @@
   width: 100%;
   overflow: hidden;
   position: relative;
+  mask-image: linear-gradient(to right, transparent, black 10% 90%, transparent);
 }
 
 .marqueContent {
