@@ -14,3 +14,4 @@ export { StackNav } from './StackNav/StackNav';
 export { StackNavButton } from './StackNavButton/StackNavButton';
 export { StackNavControl } from './StackNavControl/StackNavControl';
 export { StackNavMenu } from './StackNavMenu/StackNavMenu';
+export { AuthenticatedRoutes } from './AuthenticatedRoutes/AuthenticatedRoutes.jsx';

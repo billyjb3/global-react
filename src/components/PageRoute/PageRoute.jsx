@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useRouter } from '../../context';
+import { useRouter, useRouterAuthentication } from '../../context';
 
 export const PageRoute = (props) => {
   const {
@@ -8,13 +8,39 @@ export const PageRoute = (props) => {
     path = '',
     Component,
   } = props;
-  const { pathname, addPath } = useRouter();
+  const {
+    pathname,
+    addPath,
+    replace,
+  } = useRouter();
+  const {
+    isAuthenticatedRoute,
+    isAuthenticated,
+    isLoading,
+    unauthenticatedRedirect,
+  } = useRouterAuthentication();
+
   const composedPath = parentPath ? `${parentPath}/${path}` : path;
   const isOnRoute = !composedPath ? true : pathname.includes(composedPath);
 
   useEffect(() => {
     addPath(composedPath);
   }, [composedPath]);
+
+  useEffect(() => {
+    if (isOnRoute && isAuthenticatedRoute && !isAuthenticated && !isLoading) {
+      replace(unauthenticatedRedirect);
+    }
+  }, [
+    composedPath,
+    isOnRoute,
+    isAuthenticatedRoute,
+    isAuthenticated,
+    unauthenticatedRedirect,
+    isLoading,
+  ]);
+
+  if (isOnRoute && isAuthenticatedRoute && isLoading) return null;
 
   if (Component && isOnRoute) {
     if (children) {
