@@ -5,33 +5,33 @@ import { useRouterAuthentication as g } from "../../context/RouterAuthentication
 const L = (d) => {
   const {
     children: e,
-    parentPath: a = "",
+    parentPath: u = "",
     // TODO: nested paths aren't completely implemented yet
-    path: u = "",
+    path: c = "",
     Component: r,
-    ...c
+    ...o
   } = d, {
     pathname: f,
     addPath: R,
     replace: P
   } = E(), {
-    isAuthenticatedRoute: o,
+    isAuthenticatedRoute: i,
     isAuthenticated: s,
-    isLoading: i,
+    isLoading: a,
     unauthenticatedRedirect: m
-  } = g(), t = a ? `${a}/${u}` : u, n = t ? f.includes(t) : !0;
+  } = g(), t = u ? `${u}/${c}` : c, n = t ? f.includes(t) : !0;
   return l(() => {
     R(t);
   }, [t]), l(() => {
-    n && o && !s && !i && P(m);
+    n && i && !s && !a && P(m);
   }, [
     t,
     n,
-    o,
+    i,
     s,
     m,
-    i
-  ]), n && o && i ? null : r && n ? e ? /* @__PURE__ */ p(r, { children: e.map((A) => h.cloneElement(A, { parentPath: t, ...c })) }) : /* @__PURE__ */ p(r, {}) : e ? h.cloneElement(e, { parentPath: t, ...c }) : null;
+    a
+  ]), n && i && a ? null : r && n ? e ? /* @__PURE__ */ p(r, { children: e.map((A) => h.cloneElement(A, { parentPath: t, ...o })) }) : /* @__PURE__ */ p(r, { ...o }) : e ? h.cloneElement(e, { parentPath: t, ...o }) : null;
 };
 export {
   L as PageRoute

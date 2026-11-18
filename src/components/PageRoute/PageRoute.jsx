@@ -51,7 +51,7 @@ export const PageRoute = (props) => {
         </Component>
       );
     } else {
-      return <Component />;
+      return <Component {...rest} />;
     }
   }
 
