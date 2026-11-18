@@ -1,37 +1,38 @@
-import { jsx as m } from "react/jsx-runtime";
-import p, { useEffect as h } from "react";
-import { useRouter as A } from "../../context/RouterContext.js";
-import { useRouterAuthentication as E } from "../../context/RouterAuthenticationContext.js";
-const C = (l) => {
+import { jsx as p } from "react/jsx-runtime";
+import h, { useEffect as l } from "react";
+import { useRouter as E } from "../../context/RouterContext.js";
+import { useRouterAuthentication as g } from "../../context/RouterAuthenticationContext.js";
+const L = (d) => {
   const {
     children: e,
     parentPath: a = "",
     // TODO: nested paths aren't completely implemented yet
     path: u = "",
-    Component: r
-  } = l, {
-    pathname: d,
-    addPath: f,
-    replace: R
-  } = A(), {
+    Component: r,
+    ...c
+  } = d, {
+    pathname: f,
+    addPath: R,
+    replace: P
+  } = E(), {
     isAuthenticatedRoute: o,
-    isAuthenticated: c,
+    isAuthenticated: s,
     isLoading: i,
-    unauthenticatedRedirect: s
-  } = E(), t = a ? `${a}/${u}` : u, n = t ? d.includes(t) : !0;
-  return h(() => {
-    f(t);
-  }, [t]), h(() => {
-    n && o && !c && !i && R(s);
+    unauthenticatedRedirect: m
+  } = g(), t = a ? `${a}/${u}` : u, n = t ? f.includes(t) : !0;
+  return l(() => {
+    R(t);
+  }, [t]), l(() => {
+    n && o && !s && !i && P(m);
   }, [
     t,
     n,
     o,
-    c,
     s,
+    m,
     i
-  ]), n && o && i ? null : r && n ? e ? /* @__PURE__ */ m(r, { children: e.map((P) => p.cloneElement(P, { parentPath: t })) }) : /* @__PURE__ */ m(r, {}) : e ? p.cloneElement(e, { parentPath: t }) : null;
+  ]), n && o && i ? null : r && n ? e ? /* @__PURE__ */ p(r, { children: e.map((A) => h.cloneElement(A, { parentPath: t, ...c })) }) : /* @__PURE__ */ p(r, {}) : e ? h.cloneElement(e, { parentPath: t, ...c }) : null;
 };
 export {
-  C as PageRoute
+  L as PageRoute
 };

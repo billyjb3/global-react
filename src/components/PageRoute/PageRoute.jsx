@@ -7,6 +7,7 @@ export const PageRoute = (props) => {
     parentPath = '', // TODO: nested paths aren't completely implemented yet
     path = '',
     Component,
+    ...rest
   } = props;
   const {
     pathname,
@@ -46,7 +47,7 @@ export const PageRoute = (props) => {
     if (children) {
       return (
         <Component>
-          {children.map((child) => React.cloneElement(child, { parentPath: composedPath }))}
+          {children.map((child) => React.cloneElement(child, { parentPath: composedPath, ...rest }))}
         </Component>
       );
     } else {
@@ -55,7 +56,7 @@ export const PageRoute = (props) => {
   }
 
   if (children) return (
-    React.cloneElement(children, { parentPath: composedPath })
+    React.cloneElement(children, { parentPath: composedPath, ...rest })
   );
 
   return null;
